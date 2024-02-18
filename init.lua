@@ -4,6 +4,7 @@ require("edouard.plugins")
 
 require("edouard.plugins-config.treesitter")
 require("edouard.plugins-config.telescope")
+require("edouard.plugins-config.harpoon")
 require("edouard.plugins-config.lsp")
 require("edouard.plugins-config.cmp")
 
