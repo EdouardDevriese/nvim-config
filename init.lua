@@ -1,12 +1,12 @@
 require("set")
 require("remap")
-require("plugins")
+require("plugins.plugins")
 
-require("plugins-config.treesitter")
-require("plugins-config.telescope")
-require("plugins-config.harpoon")
-require("plugins-config.lsp")
-require("plugins-config.cmp")
+require("plugins.treesitter")
+require("plugins.telescope")
+require("plugins.harpoon")
+require("plugins.lsp")
+require("plugins.cmp")
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
