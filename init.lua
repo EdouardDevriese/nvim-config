@@ -1,12 +1,12 @@
-require("edouard.set")
-require("edouard.remap")
-require("edouard.plugins")
+require("lua.set")
+require("lua.remap")
+require("lua.plugins")
 
-require("edouard.plugins-config.treesitter")
-require("edouard.plugins-config.telescope")
-require("edouard.plugins-config.harpoon")
-require("edouard.plugins-config.lsp")
-require("edouard.plugins-config.cmp")
+require("lua.plugins-config.treesitter")
+require("lua.plugins-config.telescope")
+require("lua.plugins-config.harpoon")
+require("lua.plugins-config.lsp")
+require("lua.plugins-config.cmp")
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
