@@ -31,3 +31,5 @@ vim.opt.smartcase = true
 
 vim.opt.completeopt = 'menuone,noselect'
 vim.opt.inccommand = 'split'
+
+vim.opt.conceallevel = 2
