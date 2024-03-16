@@ -33,3 +33,5 @@ vim.opt.completeopt = 'menuone,noselect'
 vim.opt.inccommand = 'split'
 
 vim.opt.conceallevel = 2
+
+vim.opt.clipboard = 'unnamedplus'

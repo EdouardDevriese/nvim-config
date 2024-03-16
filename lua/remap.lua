@@ -22,14 +22,10 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- paste over highlighted text without losing paste buffer
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- yank to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
 -- delete to void register
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
--- format according to language conventions, experiment for now
+-- format according to language conventions
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- quickfix navigation, read up on this concept!
