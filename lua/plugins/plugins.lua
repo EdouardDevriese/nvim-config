@@ -13,9 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-    -- Detect tabstop and shiftwidth automatically
-    -- 'tpope/vim-sleuth',
-
     -- Git related plugins
     'tpope/vim-fugitive',
     'tpope/vim-rhubarb',
@@ -45,9 +42,6 @@ require('lazy').setup({
             {
                 'L3MON4D3/LuaSnip',
                 build = (function()
-                    -- Build Step is needed for regex support in snippets
-                    -- This step is not supported in many windows environments
-                    -- Remove the below condition to re-enable on windows
                     if vim.fn.has 'win32' == 1 then
                         return
                     end
@@ -140,34 +134,6 @@ require('lazy').setup({
         },
     },
 
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     priority = 1000,
-    --     lazy = false,
-    --     config = function()
-    --         require('rose-pine').setup({
-    --             variant = 'auto',
-    --         })
-    --         vim.cmd('colorscheme rose-pine')
-    --     end,
-    -- },
-
-    -- {
-    --     -- Theme inspired by Atom
-    --     'navarasu/onedark.nvim',
-    --     priority = 1000,
-    --     lazy = false,
-    --     config = function()
-    --         require('onedark').setup {
-    --             -- Set a style preset. 'dark' is default.
-    --             style = 'darker', -- dark, darker, cool, deep, warm, warmer, light
-    --         }
-    --         require('onedark').load()
-    --     end,
-    -- },
-    --
-
     {
         "folke/tokyonight.nvim",
         opts = {
@@ -182,7 +148,6 @@ require('lazy').setup({
     {
         -- Set lualine as statusline
         'nvim-lualine/lualine.nvim',
-        -- See `:help lualine.txt`
         opts = {
             options = {
                 icons_enabled = false,
@@ -196,8 +161,6 @@ require('lazy').setup({
     {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
         main = 'ibl',
         opts = {},
     },
@@ -211,13 +174,8 @@ require('lazy').setup({
         branch = '0.1.x',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-            -- Only load if `make` is available. Make sure you have the system
-            -- requirements installed.
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
-                -- NOTE: If you are having trouble with this installation,
-                --       refer to the README for telescope-fzf-native for more instructions.
                 build = 'make',
                 cond = function()
                     return vim.fn.executable 'make' == 1
@@ -274,21 +232,16 @@ require('lazy').setup({
         ui = {
             enable = true,         -- set to false to disable all additional syntax features
             update_debounce = 200, -- update delay after a text change (in milliseconds)
-            -- Define how various check-boxes are displayed
             checkboxes = {
                 -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
                 [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
                 ["x"] = { char = "", hl_group = "ObsidianDone" },
                 [">"] = { char = "", hl_group = "ObsidianRightArrow" },
                 ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-
-                -- You can also add more custom ones...
             },
             -- Use bullet marks for non-checkbox lists.
             bullets = { char = "•", hl_group = "ObsidianBullet" },
             external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-            -- Replace the above with this if you don't have a patched font:
-            -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
             reference_text = { hl_group = "ObsidianRefText" },
             highlight_text = { hl_group = "ObsidianHighlightText" },
             tags = { hl_group = "ObsidianTag" },
