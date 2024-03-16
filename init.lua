@@ -1,13 +1,14 @@
 require("set")
 require("remap")
 
-require("plugins.plugins")
+require("plugins")
 require("plugins.treesitter")
 require("plugins.telescope")
 require("plugins.harpoon")
 require("plugins.lsp")
 require("plugins.cmp")
 
+require("c_classes")
 require("cpp_classes")
 
 -- [[ Highlight on yank ]]
