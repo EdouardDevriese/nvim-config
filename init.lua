@@ -3,6 +3,7 @@ require("remap")
 require("plugins")
 require("scripts.c_classes")
 require("scripts.cpp_classes")
+require("scripts.linewrap")
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

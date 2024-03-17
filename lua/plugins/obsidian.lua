@@ -1,10 +1,8 @@
 require('obsidian').setup({
-    opts = {
-        workspaces = {
-            {
-                name = "notes",
-                path = "~/Notes",
-            }
+    workspaces = {
+        {
+            name = "notes",
+            path = "~/Notes",
         }
     },
     completion = {

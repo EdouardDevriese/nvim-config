@@ -165,5 +165,8 @@ require('lazy').setup({
         config = function()
             require('plugins.obsidian')
         end,
-    }
+    },
+
+    "folke/zen-mode.nvim",
+    "folke/twilight.nvim",
 }, {})
