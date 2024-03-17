@@ -1,13 +1,6 @@
 require("set")
 require("remap")
-
 require("plugins")
-require("plugins.treesitter")
-require("plugins.telescope")
-require("plugins.harpoon")
-require("plugins.lsp")
-require("plugins.cmp")
-
 require("scripts.c_classes")
 require("scripts.cpp_classes")
 
