@@ -8,8 +8,8 @@ require("plugins.harpoon")
 require("plugins.lsp")
 require("plugins.cmp")
 
-require("c_classes")
-require("cpp_classes")
+require("scripts.c_classes")
+require("scripts.cpp_classes")
 
 -- [[ Highlight on yank ]]
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
