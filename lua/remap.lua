@@ -1,7 +1,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ' '
 
+-- open netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+
+-- jj to normal mode
 vim.keymap.set("i", "jj", "<Esc>")
 
 -- move highlighted text up and down
@@ -23,11 +26,11 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- copy to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- delete to void register
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- format according to language conventions
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
@@ -38,14 +41,18 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- search and replace all occurences of the current word under cursor
+-- Search and replace all occurences of the current word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Diagnostic keymaps
+-- diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>dm', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
--- Toggle ZenMode
+-- toggle ZenMode
 vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
+
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)
