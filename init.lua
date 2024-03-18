@@ -3,19 +3,20 @@ require("remap")
 require("plugins")
 require("scripts.c_classes")
 require("scripts.cpp_classes")
-require("scripts.linewrap")
+require("scripts.writing_settings")
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+local enhancements_group = vim.api.nvim_create_augroup("MyEnhancements", { clear = true })
 
 -- [[ Highlight on yank ]]
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = highlight_group,
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
   pattern = '*',
 })
 
-local enhancements_group = vim.api.nvim_create_augroup("MyEnhancements", { clear = true })
 -- [[ Retain cursor position ]]
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = enhancements_group,
