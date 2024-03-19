@@ -1,9 +1,8 @@
 require("set")
 require("remap")
 require("plugins")
-require("scripts.c_classes")
-require("scripts.cpp_classes")
-require("scripts.writing_settings")
+require("autocmds")
+-- require("snippets")
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 local enhancements_group = vim.api.nvim_create_augroup("MyEnhancements", { clear = true })
