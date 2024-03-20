@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd("BufNewFile", {
         }
         -- Insert the class definition into the new .hpp file
         vim.api.nvim_buf_set_lines(0, 0, -1, false, hppContent)
+        vim.cmd("w")
 
         -- Prepare the .cpp file content with method definitions
         local cppFileName = vim.fn.expand("%:p:h") .. "/" .. className .. ".cpp"
@@ -46,9 +47,9 @@ vim.api.nvim_create_autocmd("BufNewFile", {
             "}"
         }
         -- Use Vim command to open new buffer for .cpp file, insert content, and save
-        vim.cmd("e " .. cppFileName)                        -- Open or create the .cpp file in a new buffer
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, cppContent) -- Insert the content
-        vim.cmd("w")                                        -- Save the file
-        vim.cmd("bd")                                       -- Close the buffer
+        vim.cmd("e " .. cppFileName)
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, cppContent)
+        vim.cmd("w")
+        vim.cmd("bd")
     end,
 })

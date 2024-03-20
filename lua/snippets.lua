@@ -1,4 +1,5 @@
 local ls = require("luasnip")
+local fmt = require("luasnip.extras.fmt").fmt
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
@@ -8,8 +9,45 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
 
-local snippet_generator = s("sn", {
-    t("local "), i(1, "name"), t(" = s(\""), i(2, "to_expand"), t("\", {"), i(3, ""), t("})")
+ls.add_snippets("all", {
+    s("sn", fmt(
+            [[
+            s("{}", {})
+            ]],
+            {
+                i(1, "trigger"),
+                i(2, "snippet")
+            }
+        )
+    ),
+    s("end", {
+        t("<< std::endl")
+    }),
+    s("str", {
+        t("std::string")
+    }),
+    s("mn", fmt(
+            [[
+            int main() {{
+                {}
+                return 0;
+            }}
+            ]],
+            {
+                i(1, "")
+            }
+        )
+    ),
+    s("fi", fmt(
+            [[
+            for (int i = 0; {}; i++) {{
+                {}
+            }}
+            ]],
+            {
+                i(1, "condition"),
+                i(2, "body")
+            }
+        )
+    )
 })
-
-ls.add_snippets("all", { snippet_generator })

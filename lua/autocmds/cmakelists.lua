@@ -25,5 +25,6 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 
         -- Insert the content into the new CMakeLists.txt file
         vim.api.nvim_buf_set_lines(0, 0, -1, false, cmakeContent)
+        vim.cmd("w")
     end,
 })
