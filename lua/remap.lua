@@ -25,15 +25,14 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- paste over highlighted text without losing paste buffer
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- copy to system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
--- delete to void register
+-- delete without losing paste buffer
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- format according to language conventions
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- copy to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", function()
+    vim.cmd "%y+"
+end)
 
 -- quickfix navigation, read up on this concept!
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -53,6 +52,7 @@ vim.keymap.set('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'Open diag
 -- toggle ZenMode
 vim.keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
 
+-- source current file
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
