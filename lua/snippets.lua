@@ -9,7 +9,7 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
 
-ls.add_snippets("all", {
+ls.add_snippets("lua", {
     s("sn", fmt(
         [[
             s("{}", {})
@@ -20,6 +20,27 @@ ls.add_snippets("all", {
         }
     )
     ),
+    s("autocmd", fmt(
+        [[
+        vim.api.nvim_create_autocmd("{}", {{
+            group = {},
+            pattern = "{}",
+            callback = function()
+                {}
+            end,
+        }})
+        ]],
+        {
+            i(1, "event"),
+            i(2, "group"),
+            i(3, "pattern"),
+            i(4, "action")
+        }
+    )
+    )
+})
+
+ls.add_snippets("cpp", {
     s("end", {
         t("<< std::endl")
     }),
@@ -50,22 +71,4 @@ ls.add_snippets("all", {
         }
     )
     ),
-    s("autocmd", fmt(
-        [[
-        vim.api.nvim_create_autocmd("{}", {{
-            group = {},
-            pattern = "{}",
-            callback = function()
-                {}
-            end,
-        }})
-        ]],
-        {
-            i(1, "event"),
-            i(2, "group"),
-            i(3, "pattern"),
-            i(4, "action")
-        }
-    )
-    )
 })
