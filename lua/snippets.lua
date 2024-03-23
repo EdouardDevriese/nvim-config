@@ -1,5 +1,6 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
@@ -10,31 +11,31 @@ local d = ls.dynamic_node
 local r = ls.restore_node
 
 ls.add_snippets("lua", {
-    s("sn", fmt(
+    s("sn", fmta(
         [[
-            s("{}", {})
+            s("<trigger>", <snippet>)
             ]],
         {
-            i(1, "trigger"),
-            i(2, "snippet")
+            trigger = i(1, "trigger"),
+            snippet = i(2, "snippet")
         }
     )
     ),
-    s("autocmd", fmt(
+    s("autocmd", fmta(
         [[
-        vim.api.nvim_create_autocmd("{}", {{
-            group = {},
-            pattern = "{}",
+        vim.api.nvim_create_autocmd("<event>", {
+            group = <group>,
+            pattern = "<pattern>",
             callback = function()
-                {}
+                <body>
             end,
-        }})
+        })
         ]],
         {
-            i(1, "event"),
-            i(2, "group"),
-            i(3, "pattern"),
-            i(4, "action")
+            event = i(1, "event"),
+            group = i(2, "group"),
+            pattern = i(3, "*"),
+            body = i(4, "body")
         }
     )
     )
@@ -44,30 +45,62 @@ ls.add_snippets("cpp", {
     s("end", {
         t("<< std::endl")
     }),
+    s("cerr", fmta(
+        [[
+        std::cerr << <message>;
+        ]],
+        {
+            message = i(1, "message")
+        }
+    )),
     s("str", {
         t("std::string")
     }),
-    s("mn", fmt(
+    s("mn", fmta(
         [[
-            int main() {{
-                {}
+            int main() {
+                <body>
                 return 0;
-            }}
+            }
             ]],
         {
-            i(1, "")
+            body = i(1, "")
         }
     )
     ),
     s("fi", fmt(
         [[
-            for (int i = 0; {}; i++) {{
+            for (int i = 0; i < {}; i++) {{
                 {}
             }}
             ]],
         {
-            i(1, "condition"),
+            i(1, "N"),
             i(2, "body")
+        }
+    )
+    ),
+    s("fn", fmta(
+        [[
+        <returnType> <functionName>(<parameters>)<isConst> {
+            <body>
+        }
+        ]],
+        {
+            returnType = c(1, {
+                t(""),
+                t("void"),
+                t("int"),
+                t("bool"),
+                t("std::string"),
+                t("const std::string"),
+                t("const std::string&"),
+            }
+            ),
+            functionName = i(2, "name"),
+            parameters = i(3, ""),
+            isConst = c(4, { t(" const"), t("") }),
+            body = i(5, "// TODO: implement function")
         }
     )
     ),

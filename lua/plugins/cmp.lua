@@ -31,24 +31,14 @@ cmp.setup {
             else
                 fallback()
             end
-        end, {'i', 's'}),
+        end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
             end
-        end, {'i', 's'}),
-        -- ['<C-l>'] = cmp.mapping(function()
-        --     if luasnip.expand_or_locally_jumpable() then
-        --         luasnip.expand_or_jump()
-        --     end
-        -- end, { 'i', 's' }),
-        -- ['<C-h>'] = cmp.mapping(function()
-        --     if luasnip.locally_jumpable(-1) then
-        --         luasnip.jump(-1)
-        --     end
-        -- end, { 'i', 's' }),
+        end, { 'i', 's' }),
     },
     sources = {
         { name = 'nvim_lsp' },
@@ -56,3 +46,8 @@ cmp.setup {
         { name = 'path' },
     },
 }
+
+vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
+vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
