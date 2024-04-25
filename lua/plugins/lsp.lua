@@ -61,11 +61,12 @@ local servers = {
     clangd = {
         cmd = { "clangd", "--background-index", "--suggest-missing-includes" },
     },
-    -- gopls = {},
-    -- pyright = {},
-    -- rust_analyzer = {},
+    jdtls = {},
+    gopls = {},
+    pyright = {},
+    rust_analyzer = {},
+    html = { filetypes = { 'html', 'twig', 'hbs'} },
     -- tsserver = {},
-    -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
     lua_ls = {
         Lua = {

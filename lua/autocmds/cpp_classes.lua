@@ -30,22 +30,30 @@ vim.api.nvim_create_autocmd("BufNewFile", {
         local cppFileName = vim.fn.expand("%:p:h") .. "/" .. className .. ".cpp"
         local cppContent = {
             "#include \"" .. className .. ".hpp\"",
+            "#include <iostream>",
             "",
             "// Default constructor implementation",
             className .. "::" .. className .. "() {",
+            "   std::cout << \"" .. className .. " default constructor has been called\" << std::endl;",
             "}",
             "",
             "// Copy constructor implementation",
             className .. "::" .. className .. "(const " .. className .. "& other) {",
+            "   std::cout << \"" .. className .. " copy constructor has been called\" << std::endl;",
+            "   *this = other;",
             "}",
             "",
             "// Copy assignment operator implementation",
             className .. "& " .. className .. "::operator=(const " .. className .. "& other) {",
-            "    return *this;",
+            "   std::cout << \"" .. className .. " copy assignment operator has been called\" << std::endl;",
+            "   if (this != &other) {",
+            "   }",
+            "   return *this;",
             "}",
             "",
             "// Destructor implementation",
             className .. "::~" .. className .. "() {",
+            "   std::cout << \"" .. className .. " destructor has been called\" << std::endl;",
             "}"
         }
         -- Use Vim command to open new buffer for .cpp file, insert content, and save

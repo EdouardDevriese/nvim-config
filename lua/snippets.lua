@@ -98,10 +98,54 @@ ls.add_snippets("cpp", {
             }
             ),
             functionName = i(2, "name"),
-            parameters = i(3, ""),
+            parameters = i(3, "void"),
             isConst = c(4, { t(" const"), t("") }),
             body = i(5, "// TODO: implement function")
         }
     )
     ),
+    s("fnd", fmta(
+        [[
+        <returnType> <functionName>(<parameters>)<isConst>;
+        ]],
+        {
+            returnType = c(1, {
+                t(""),
+                t("void"),
+                t("int"),
+                t("bool"),
+                t("std::string"),
+                t("const std::string"),
+                t("const std::string&"),
+            }
+            ),
+            functionName = i(2, "name"),
+            parameters = i(3, "void"),
+            isConst = c(4, { t(" const"), t("") }),
+        }
+    )
+    ),
+    s("ter", fmt(
+        [[
+        {} ? {} : {};
+        ]],
+        {
+            i(1, "condition"),
+            i(2, "1"),
+            i(3, "0")
+        }
+    )),
+})
+
+ls.add_snippets("go", {
+    s("ien", fmt(
+        [[
+        if err != nil {{
+            {}
+        }}
+        ]],
+        {
+            i(1, "return")
+        }
+    ))
 })
