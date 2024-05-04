@@ -1,6 +1,7 @@
 local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
+local rep = require("luasnip.extras").rep
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
@@ -9,6 +10,55 @@ local f = ls.function_node
 local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
+
+ls.add_snippets("python", {
+    s("ds", t(
+        "with driver.session() as session:"
+    )
+    ),
+    s("anno", fmt(
+        [[
+        Annotated[{}, {}]
+        ]],
+        {
+            i(1, ""),
+            c(2, {
+                t("Body()"),
+                t("Query()"),
+                t("Path()"),
+                t("")
+            }
+            )
+        }
+    )
+    ),
+    s("@", fmta(
+        [[
+        @router.<http>("/ ,,, ")
+        async def <func1>():
+
+            def _<func2>(tx: Transaction):
+                result = tx.run("""
+                    ,,,
+                """, ,,, ).single()
+                return result ,,,
+
+            with driver.session() as session:
+                ,,, = session.execute_<readwrite>(_<func3>, ,,,)
+                ,,,
+        ]],
+        {
+            http = i(1, ""),
+            func1 = i(2, "name"),
+            func2 = rep(2),
+            func3 = rep(2),
+            readwrite = c(3, {
+                t("read"),
+                t("write")
+            })
+        }
+    ))
+})
 
 ls.add_snippets("lua", {
     s("sn", fmta(
